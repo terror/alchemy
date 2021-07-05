@@ -1,3 +1,3 @@
 ## experiments
 
-random code that doens't merit it's own repo
+random code that doesn't merit it's own repo
