@@ -12,5 +12,14 @@ amend:
   git commit --amend --no-edit
   git push -f origin master
 
-scm *name:
-  scheme --quiet < $(find . -name {{name}}.scm)
+go name:
+  go run go/{{name}}.go
+
+py name:
+  python3 python/{{name}}.py
+
+rs name:
+  cd rust && cargo run --bin {{name}}
+
+scm name:
+  scheme --quiet < $(fd --glob {{name}}.scm)
