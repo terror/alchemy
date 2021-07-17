@@ -10,6 +10,7 @@ def dec(func):
   def wrap():
     print('Extended behaviour!')
     func()
+
   return wrap
 
 @dec

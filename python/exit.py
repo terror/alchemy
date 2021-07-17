@@ -11,17 +11,22 @@ import sys
 
 @atexit.register
 def clean():
-    print("cleaned!")
+  print("cleaned!")
 
 def main():
-    d = {1: 2, 2: 3, 3: 4}; c = 0
-    for i in range(1, 4):
-        c += d[i]
-    print("lol!", c)
+  d = {
+    1: 2,
+    2: 3,
+    3: 4
+  }
+  c = 0
+  for i in range(1, 4):
+    c += d[i]
+  print("lol!", c)
 
 if __name__ == '__main__':
-    main()
-    """
-    lol! 9
-    cleaned!
-    """
+  main()
+  """
+  lol! 9
+  cleaned!
+  """

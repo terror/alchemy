@@ -5,10 +5,8 @@ from collections import deque
 
 class TestParse(unittest.TestCase):
   def setUp(self):
-    self.cases = [
-      ('(first (list 1 (+ 2 3) 9))', ["first", ["list", 1, ["+", 2, 3], 9]]),
-      ('(first (list 1 (+ 2 3.5) 9.4))', ["first", ["list", 1, ["+", 2, 3.5], 9.4]])
-    ]
+    self.cases = [('(first (list 1 (+ 2 3) 9))', ["first", ["list", 1, ["+", 2, 3], 9]]),
+                  ('(first (list 1 (+ 2 3.5) 9.4))', ["first", ["list", 1, ["+", 2, 3.5], 9.4]])]
 
   def test_parse(self):
     for expr, result in self.cases:
@@ -28,7 +26,7 @@ def parse(expr):
   # (            -> append a list
   # )            -> merge current list with previous
   # ['first', '(list', '1', '(+', '2', '3)', '9)']
-  expr   = deque(expr[1:][:-1].split())
+  expr = deque(expr[1:][:-1].split())
   result = [[]]
   while expr:
     curr = expr.popleft()

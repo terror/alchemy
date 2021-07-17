@@ -1,9 +1,12 @@
 def curry(func):
   def wrap(*args, **kwargs):
     ans = func(*args, **kwargs)
+
     def r(*args, **kwargs):
       return ans + func(*args, **kwargs)
+
     return r
+
   return wrap
 
 @curry

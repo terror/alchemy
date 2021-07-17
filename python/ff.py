@@ -46,5 +46,7 @@ def main(args):
     print(name, count)
 
 if __name__ == '__main__':
-  try: main(cli())
-  except Exception as error: print(error)
+  try:
+    main(cli())
+  except Exception as error:
+    print(error)

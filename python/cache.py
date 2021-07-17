@@ -1,7 +1,7 @@
 import time, functools
 
 class Foo:
-  def __init__(self, n = 1):
+  def __init__(self, n=1):
     self.n = n
 
   @functools.cached_property

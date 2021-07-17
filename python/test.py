@@ -8,22 +8,26 @@ class T:
     status = lambda name, result: f"[{name}] ... {result}"
     for test in T.store:
       try:
-        test(); print(status(test.__name__, "PASSED"))
-      except: print(status(test.__name__, "FAILED"))
+        test()
+        print(status(test.__name__, "PASSED"))
+      except:
+        print(status(test.__name__, "FAILED"))
 
   @staticmethod
   def test(*args, **kwargs):
     def wrap(func):
       T.store.append(func)
+
     return wrap
 
   @staticmethod
-  def fuzz(fn, n = 10):
+  def fuzz(fn, n=10):
     # this just passes in random integers
     def wrap(func):
       for args in [[random.randint(1, 1000000) for i in range(fn.__code__.co_argcount)] for i in range(n)]:
         fn(*args)
       T.store.append(func)
+
     return wrap
 
 def add(x, y):
