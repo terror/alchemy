@@ -8,7 +8,7 @@
 
 (define (sum-digits n)
   (cond ((< n 10) n)
-        (else (+ (remainder n 10) (sum-digits (floor (/ n 10))) ))))
+    (else (+ (remainder n 10) (sum-digits (floor (/ n 10))) ))))
 
 ; --- tests --
 

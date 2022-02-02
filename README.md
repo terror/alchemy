@@ -1,3 +1,4 @@
-### alchemy
+⚗️
 
-Random programs that don't merit their own repository, sorted by language.
+Random programs that don't merit their own repository, dumped in
+[`/src`](https://github.com/terror/alchemy/tree/master/src).

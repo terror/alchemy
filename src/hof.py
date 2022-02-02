@@ -1,3 +1,5 @@
+import time
+
 def filter(func, iterable):
   return [el for el in iterable if func(el)]
 

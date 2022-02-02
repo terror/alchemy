@@ -4,7 +4,7 @@
 
 (define (sum lst)
   (cond ((null? lst) 0)
-        (else (+ (car lst) (sum (cdr lst))))))
+    (else (+ (car lst) (sum (cdr lst))))))
 
 (define (test)
   (assert-equal (sum '(1 2 3)) 6)

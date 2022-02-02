@@ -1,4 +1,8 @@
-import sys, argparse, unittest, ast, string
+import argparse
+import ast
+import string
+import sys
+import unittest
 from collections import deque
 
 # **** tests ****
@@ -18,9 +22,28 @@ class TestParse(unittest.TestCase):
     for expr, result in self.cases:
       self.assertEqual(parse(expr), result)
 
+class TestEval(unittest.TestCase):
+  def setUp(self):
+    self.cases = [
+      ('(+ 1 2)', 3),
+      ('(+ 1 2 (* 3 4 (+ 1 1)))', 27)
+    ]
+
+  def test_eval(self):
+    for expr, result in self.cases:
+      self.assertEqual(eval(expr), self.cases)
+
 # **** core ****
 
-def eval(s):
+def eval(tokens):
+  # evaluate each sub expression
+  # ['+', 1, 2 ['+', 3, 4]]
+  # -> ['+', 1, 2, 7]
+  # -> [10]
+  # -> 10
+  pass
+
+def eval_scalar(s):
   try:
     s = ast.literal_eval(s)
   except:
@@ -45,7 +68,7 @@ def parse(expr):
         continue
       while expr[0] not in ['(', ')', ' ']:
         curr += expr.popleft()
-      result[-1].append(eval(curr))
+      result[-1].append(eval_scalar(curr))
   return result[0]
 
 def cli():
@@ -58,7 +81,7 @@ def main(args):
     sys.argv = [sys.argv[0]]
     unittest.main()
     return
-  print(parse('(+ 3 (* 5 4 (/ 7 8)))'))
+  print(parse(('(+ 3 (* 5 4 (/ 7 8)))')))
 
 if __name__ == '__main__':
   main(cli())

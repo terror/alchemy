@@ -8,11 +8,11 @@ class OP(Enum):
   MOD = 5
 
 d = {
-    OP.ADD: lambda x, y: x + y,
-    OP.SUB: lambda x, y: x - y,
-    OP.MUL: lambda x, y: x * y,
-    OP.DIV: lambda x, y: x / y,
-    OP.MOD: lambda x, y: x % y
+  OP.ADD: lambda x, y: x + y,
+  OP.SUB: lambda x, y: x - y,
+  OP.MUL: lambda x, y: x * y,
+  OP.DIV: lambda x, y: x / y,
+  OP.MOD: lambda x, y: x % y
 }
 
 if __name__ == '__main__':

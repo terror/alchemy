@@ -8,8 +8,8 @@
 
 (define (member? lst item)
   (cond ((null? lst) #f)
-        ((= item (car lst)) #t)
-        (else (member? (cdr lst) item)) ))
+    ((= item (car lst)) #t)
+    (else (member? (cdr lst) item)) ))
 
 ; --- tests ---
 

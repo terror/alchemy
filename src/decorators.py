@@ -1,24 +1,21 @@
-def wrap(func):
+def A(func):
   print("wow!")
   func()
   print("oo")
 
-def hello():
+def B():
   print("hello!")
 
-def dec(func):
+def C(func):
   def wrap():
     print('Extended behaviour!')
     func()
-
   return wrap
 
-@dec
-def decoratee():
+@C
+def D():
   print('hello!')
 
 if __name__ == '__main__':
-  x = wrap
-  x(hello)
-
-  decoratee()
+  A(B)
+  D()
