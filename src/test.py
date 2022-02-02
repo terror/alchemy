@@ -24,7 +24,9 @@ class T:
   def fuzz(fn, n=10):
     # this just passes in random integers
     def wrap(func):
-      for args in [[random.randint(1, 1000000) for i in range(fn.__code__.co_argcount)] for i in range(n)]:
+      for args in [[random.randint(1, 1000000)
+                    for i in range(fn.__code__.co_argcount)]
+                   for i in range(n)]:
         fn(*args)
       T.store.append(func)
 

@@ -10,12 +10,12 @@ from collections import deque
 class TestParse(unittest.TestCase):
   def setUp(self):
     self.cases = [
-      ('(first (list 1 (+ 2 3) 9))',            ['first', ['list', 1, ['+', 2, 3], 9]]),
-      ('(first (list 1 (+ 2 3.5) 9.4))',        ['first', ['list', 1, ['+', 2, 3.5], 9.4]]),
-      ('(+ 3 (* 5 4 (/ 7 8)))',                 ['+', 3, ['*', 5, 4, ['/', 7, 8]]]),
-      ('(+ 322 (* 55 488 (/ 78 81)))',          ['+', 322, ['*', 55, 488, ['/', 78, 81]]]),
+      ('(first (list 1 (+ 2 3) 9))', ['first', ['list', 1, ['+', 2, 3], 9]]),
+      ('(first (list 1 (+ 2 3.5) 9.4))', ['first', ['list', 1, ['+', 2, 3.5], 9.4]]),
+      ('(+ 3 (* 5 4 (/ 7 8)))', ['+', 3, ['*', 5, 4, ['/', 7, 8]]]),
+      ('(+ 322 (* 55 488 (/ 78 81)))', ['+', 322, ['*', 55, 488, ['/', 78, 81]]]),
       ('(+ 1 (+ 2 3 (+ 4 5 (+ 6 7 (+ 8 9)))))', ['+', 1, ['+', 2, 3, ['+', 4, 5, ['+', 6, 7, ['+', 8, 9]]]]]),
-      ('()',                                    [])
+      ('()', [])
     ]
 
   def test_parse(self):
@@ -24,10 +24,7 @@ class TestParse(unittest.TestCase):
 
 class TestEval(unittest.TestCase):
   def setUp(self):
-    self.cases = [
-      ('(+ 1 2)', 3),
-      ('(+ 1 2 (* 3 4 (+ 1 1)))', 27)
-    ]
+    self.cases = [('(+ 1 2)', 3), ('(+ 1 2 (* 3 4 (+ 1 1)))', 27)]
 
   def test_eval(self):
     for expr, result in self.cases:
@@ -55,7 +52,7 @@ def parse(expr):
   # (            -> append a list
   # )            -> merge current list with previous
   # ['+', ' ', '3', ' ', '(', '*', ' ', '5', ' ', '4', ' ', '(', '/', ' ', '7', ' ', '8', ')', ')']
-  expr   = deque(expr[1:][:-1])
+  expr = deque(expr[1:][:-1])
   result = [[]]
   while expr:
     curr = expr.popleft()
